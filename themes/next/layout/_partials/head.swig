@@ -1,8 +1,5 @@
 <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="Author" content="ecitlm">
-<meta name="Keywords" content="IT¿ª·¢Õß|IT¿ª·¢Õß²©¿Í|ecitlm">
-<meta name="Description" content="IT¿ª·¢Õß|IT¿ª·¢Õß²©¿Í">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -11,15 +8,15 @@
 <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
 <style>
     .pace .pace-progress {
-        background: #000; /*½ø¶ÈÌõÑÕÉ«*/
+        background: #000; /*è¿›åº¦æ¡é¢œè‰²*/
         height: 3px;
     }
     .pace .pace-progress-inner {
-         box-shadow: 0 0 10px #000, 0 0 5px     #000; /*ÒõÓ°ÑÕÉ«*/
+         box-shadow: 0 0 10px #000, 0 0 5px     #000; /*é˜´å½±é¢œè‰²*/
     }
     .pace .pace-activity {
-        border-top-color: #000;    /*ÉÏ±ß¿òÑÕÉ«*/
-        border-left-color: #000;    /*×ó±ß¿òÑÕÉ«*/
+        border-top-color: #000;    /*ä¸Šè¾¹æ¡†é¢œè‰²*/
+        border-left-color: #000;    /*å·¦è¾¹æ¡†é¢œè‰²*/
     }
 </style>
 
