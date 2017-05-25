@@ -78,6 +78,13 @@ deploy:
 
 # Social links
 social:
-  github: https://github.com/ecitlm
+  GitHub: https://github.com/ecitlm
   Coding: https://coding.net/u/ecit
-  个人简历: http://me.it919.cn/
+  #个人简历: http://me.it919.cn/
+
+social_icons:
+  enable: true #控制是否显示图标
+  #KeyMapsToMenuItemKey: NameOfTheIconFromFontAwesome
+  #github:  github
+  #Coding:  coding
+  #个人简历:  resume
