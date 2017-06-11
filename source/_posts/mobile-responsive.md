@@ -103,7 +103,7 @@ docEl.style.fontSize = rem + "px";   //设置html的字号为第二行的值
 假如设计稿的大小实际是750px的设计稿,计算出来根字体为50px,Iphone 实际是375px的宽度,计算就是7.5rem的宽度
 
 阿里团队开源的一个库
-https://github.com/amfe/lib-flexible?utm_source=caibaojian.com
+https://github.com/amfe/lib-flexible
 
 
 
