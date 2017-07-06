@@ -14,10 +14,10 @@ date: 2017-1-17 09:45:55
  广东 深圳，男，26岁
  东华理工大学 软件工程
  Email: ecitlm@163.com
- Coding: [Coding](https://coding.net/u/ecit)
+ GitHub: [GitHub](https://github.com/ecitlm)
 
 
-##### 座右铭 : 地上本没有路,走的人多了,也便成了路
+##### 座右铭 : 地上本没有路,走的人多了,也便成了路.
 
 --------------------------------
 

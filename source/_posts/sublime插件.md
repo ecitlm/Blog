@@ -61,6 +61,15 @@ importurllib.request,os;pf='Package Control.sublime-package';ipp=sublime.install
 #### FileHeader
 
 >快速新建文件、并生产头部注释    [GitHub地址](https://github.com/shiyanhui/FileHeader)
+打开Preferences –Package Settings-File Header-settings user，输入
+```
+{
+    "Default": {
+       "author":"ecitlm",
+       "last_modified_by":"ecitlm",
+    }
+}
+```
 
 ![效果演示图](http://upload-images.jianshu.io/upload_images/1838578-a2f3b7b8c148b861.gif?imageMogr2/auto-orient/strip)
 

@@ -26,3 +26,14 @@
   <span class="post-count">博客全站共{{ totalcount(site) }}字</span>
 </div>
 
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?6fbe06b4e898b834715c43886bdd9985";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
