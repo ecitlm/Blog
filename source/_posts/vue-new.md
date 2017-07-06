@@ -2,7 +2,7 @@
 title: 基于Vue2+axios+VueRouter的新闻web单页应用
 date: 2017-06-30 14:34:28
 comments: true
-categories: vue
+categories: Vue
 tags: [Vue]
 keywords: T基于Vue2+axios+VueRouter的新闻web单页应用
 description: 项目基于Vue2+axios+VueRouter的一个小应用,热点新闻展示、歌曲排行展示播放、热播电影详情查看、微信精选、百度美图、搞笑段子,
@@ -43,7 +43,7 @@ npm run dev
 >这里封装了两个网络请求方法  fetchPost，fetchGet以及请求配置，通过
 
 config,js
-```
+```javascript
 import axios from 'axios'
 import qs from 'qs'
 // axios 配置
@@ -109,7 +109,7 @@ export default {
 ```
 >api.js 为所有接口封装,如下面的相关接口
 
-```
+```javascript
 import fetch from './config'
 export default {
     /**
@@ -133,7 +133,7 @@ export default {
 
 > 使用请求接口数据
 
-```
+```javascript
  // 获取首页新闻列表
     [types.FECTH_INDEX_NEWS]({commit}) {
         var data={
