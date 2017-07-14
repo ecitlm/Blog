@@ -26,6 +26,10 @@
   <span class="post-count">博客全站共{{ totalcount(site) }}字</span>
 </div>
 
+<!-- 动画线条 -->
+<script src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+<!-- 百度统计 -->
 <script>
 var _hmt = _hmt || [];
 (function() {

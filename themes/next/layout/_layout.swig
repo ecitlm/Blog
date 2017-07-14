@@ -7,7 +7,6 @@
 
 <html class="{{ html_class | lower }}" lang="{{ config.language }}">
 <head>
-<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
   {% include '_partials/head.swig' %}
   <title>{% block title %}{% endblock %}</title>
