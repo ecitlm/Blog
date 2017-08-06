@@ -27,8 +27,13 @@
 </div>
 
 <!-- 动画线条 -->
+<<<<<<< HEAD
 <!-- <script src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script> -->
 
+=======
+<!-- <script src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+ -->
+>>>>>>> 43adff55f41741817bf19a31a630675f56e970c2
 <!-- 百度统计 -->
 <script>
 var _hmt = _hmt || [];
