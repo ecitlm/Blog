@@ -38,4 +38,4 @@ date: 2017-1-17 09:45:55
 1. Photoshop
 
 -------
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=22463223&auto=1&height=66"></iframe>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=27159995&auto=1&height=66"></iframe>
