@@ -110,12 +110,10 @@
 <meta property="og:site_name" content="IT开发者">
 <meta property="og:description" content="微信小程序的一些相关笔记。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://static.oschina.net/uploads/img/201609/29231201_GcPQ.png">
-<meta property="og:updated_time" content="2017-10-20T16:01:50.915Z">
+<meta property="og:updated_time" content="2017-11-03T14:52:21.802Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微信小程序相关">
 <meta name="twitter:description" content="微信小程序的一些相关笔记。">
-<meta name="twitter:image" content="https://static.oschina.net/uploads/img/201609/29231201_GcPQ.png">
 
 
 
@@ -377,7 +375,6 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">id</span>=<span class="string">"tapTest"</span> <span class="attr">data-hi</span>=<span class="string">"MINA"</span> <span class="attr">bindtap</span>=<span class="string">"tapName"</span>&gt;</span> Click me! <span class="tag">&lt;/<span class="name">view</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Page(&#123;</div><div class="line">  tapName: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(event.target) </div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//事件处理函数</span></div><div class="line">bindViewTap: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">var</span> id=e.target.id;</div><div class="line">  <span class="built_in">console</span>.log(e.target.id);</div><div class="line">    </div><div class="line"> <span class="comment">// this.data.id=id,</span></div><div class="line">  <span class="built_in">console</span>.log(id);</div><div class="line"></div><div class="line">  wx.navigateTo(&#123;</div><div class="line">    url: <span class="string">'../logs/logs?title='</span>+id</div><div class="line">  &#125;)</div><div class="line">&#125;,</div></pre></td></tr></table></figure>
-<p> <img src="https://static.oschina.net/uploads/img/201609/29231201_GcPQ.png" alt="图片"> </p>
 <p>可以看到 dataset 里面就是我们设置的data-hi=”MINA”的值了。</p>
 <p>现在我们来看下刚刚我们写的， 首先 bindtap,以bind开头的就是要给他绑定个事件，</p>
 <p>这个事件的名字就是“=”号后面的数值就是绑定的事件名称，需要在 逻辑【js】层定义上。 </p>

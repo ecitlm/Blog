@@ -15,7 +15,9 @@ __写在前面的一段话__
 从此对火箭队情有独钟、时至今日依然对那支22连胜的火箭有太多感情、时至今日绿军三巨头、邓肯、蜗壳都已经退役了,oh~oh~oh好像有点跑题了，还是回到主题、记录花了几天时间写的这个小程序
 
 __话不多少先上源码地址__
-GitHub地址: https://github.com/ecitlm/wx-nba
+小程序GitHub地址: https://github.com/ecitlm/wx-nba
+后端接口API地址:可先参照  https://ecitlm.github.io/TP5_Splider/#/?id=tp5_splider 
+项目下面的 controller 下的Nba.php类
 
 __部分界面效果体验__
 

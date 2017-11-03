@@ -56,9 +56,6 @@ Page({
 
 ```
 
-
- ![图片](https://static.oschina.net/uploads/img/201609/29231201_GcPQ.png) 
-
 可以看到 dataset 里面就是我们设置的data-hi="MINA"的值了。
 
 现在我们来看下刚刚我们写的， 首先 bindtap,以bind开头的就是要给他绑定个事件，
