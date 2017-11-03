@@ -30,7 +30,7 @@ date: 2017-1-17 09:45:55
 
 >### 技能
 
-1. HTML+CSS  Javascript  Vue.js  Jquery Node
+1. HTML+CSS  Javascript  Vue.js  Jquery Node Webpack gulp
 1. MySQL
 1. PHP
 1. Linux

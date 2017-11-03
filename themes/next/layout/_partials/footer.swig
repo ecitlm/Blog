@@ -23,17 +23,11 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共{{ totalcount(site) }}字</span>
+  <span class="post-count">博客全站共{{ totalcount(site) }}字       &#169;    CopyRight 赣ICP备16002536号-1</span>
 </div>
 
 <!-- 动画线条 -->
-<<<<<<< HEAD
-<!-- <script src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script> -->
-
-=======
-<!-- <script src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
- -->
->>>>>>> 43adff55f41741817bf19a31a630675f56e970c2
+ <script src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 <!-- 百度统计 -->
 <script>
 var _hmt = _hmt || [];
