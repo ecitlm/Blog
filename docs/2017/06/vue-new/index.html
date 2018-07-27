@@ -1,0 +1,763 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #000; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #000, 0 0 5px     #000; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #000;    /*上边框颜色*/
+        border-left-color: #000;    /*左边框颜色*/
+    }
+</style>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+<!-- 
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+-->
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="T基于Vue2+axios+VueRouter的新闻web单页应用" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="项目基于Vue2+axios+VueRouter的一个小应用,热点新闻展示、歌曲排行展示播放、热播电影详情查看、微信精选、百度美图、搞笑段子,">
+<meta name="keywords" content="T基于Vue2+axios+VueRouter的新闻web单页应用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于Vue2+axios+VueRouter的新闻web单页应用">
+<meta property="og:url" content="http://code.it919.cn/2017/06/vue-new/index.html">
+<meta property="og:site_name" content="IT开发者">
+<meta property="og:description" content="项目基于Vue2+axios+VueRouter的一个小应用,热点新闻展示、歌曲排行展示播放、热播电影详情查看、微信精选、百度美图、搞笑段子,">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://dn-coding-net-production-pp.qbox.me/8175c051-daa0-4148-8842-c235c2a398de.png">
+<meta property="og:image" content="https://coding.net/u/ecit/p/vue_news/git/raw/898b4a541e6433d131baa5aff72abee62236ed35/UI/index1.jpg">
+<meta property="og:image" content="https://dn-coding-net-production-pp.qbox.me/a271b902-089f-4a1b-8879-357a113b66e5.png">
+<meta property="og:image" content="https://coding.net/u/ecit/p/vue_news/git/raw/master/UI/%25E7%2594%25B5%25E5%25BD%25B11-%25E7%2583%25AD%25E6%2592%25AD%25E5%2588%2597%25E8%25A1%25A8.jpg">
+<meta property="og:image" content="https://coding.net/u/ecit/p/vue_news/git/raw/898b4a541e6433d131baa5aff72abee62236ed35/UI/%25E7%2594%25B5%25E5%25BD%25B12-%25E8%25AF%25A6%25E6%2583%2585.jpg">
+<meta property="og:image" content="https://coding.net/u/ecit/p/vue_news/git/raw/898b4a541e6433d131baa5aff72abee62236ed35/UI/music1-%E5%88%86%E7%B1%BB.jpg">
+<meta property="og:image" content="https://coding.net/u/ecit/p/vue_news/git/raw/898b4a541e6433d131baa5aff72abee62236ed35/UI/music2-%E5%88%86%E7%B1%BB%E6%AD%8C%E5%8D%95.jpg">
+<meta property="og:image" content="https://coding.net/u/ecit/p/vue_news/git/raw/898b4a541e6433d131baa5aff72abee62236ed35/UI/music3-音乐播放.jpg">
+<meta property="og:image" content="https://coding.net/u/ecit/p/vue_news/git/raw/898b4a541e6433d131baa5aff72abee62236ed35/UI/photo1-%E5%88%86%E7%B1%BB.jpg">
+<meta property="og:image" content="https://coding.net/u/ecit/p/vue_news/git/raw/898b4a541e6433d131baa5aff72abee62236ed35/UI/%E8%A7%86%E9%A2%911.jpg">
+<meta property="og:image" content="https://coding.net/u/ecit/p/vue_news/git/raw/898b4a541e6433d131baa5aff72abee62236ed35/UI/%E7%AC%91%E8%AF%9D%E6%AE%B5%E5%AD%90.jpg">
+<meta property="og:updated_time" content="2017-10-20T16:01:50.913Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于Vue2+axios+VueRouter的新闻web单页应用">
+<meta name="twitter:description" content="项目基于Vue2+axios+VueRouter的一个小应用,热点新闻展示、歌曲排行展示播放、热播电影详情查看、微信精选、百度美图、搞笑段子,">
+<meta name="twitter:image" content="https://dn-coding-net-production-pp.qbox.me/8175c051-daa0-4148-8842-c235c2a398de.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://code.it919.cn/2017/06/vue-new/"/>
+
+
+
+
+
+  <title> 基于Vue2+axios+VueRouter的新闻web单页应用 | IT开发者 </title>
+  
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+    <a href="https://github.com/ecitlm" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">IT开发者</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://code.it919.cn/2017/06/vue-new/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="ecitlm">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/img/head.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="IT开发者">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="IT开发者" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                基于Vue2+axios+VueRouter的新闻web单页应用
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="post.created" itemprop="dateCreated datePublished" datetime="2017-06-30T14:34:28+08:00">
+                2017-06-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+              <div class="post-description">
+                  项目基于Vue2+axios+VueRouter的一个小应用,热点新闻展示、歌曲排行展示播放、热播电影详情查看、微信精选、百度美图、搞笑段子,
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>##vue_news<br>项目基于Vue2+axios+VueRouter的一个小应用,热点新闻展示、歌曲排行展示播放、热播电影详情查看、微信精选、百度美图、搞笑段子,<br>小Demo还在不断改进中，也敦促自己不断学习前进</p>
+<blockquote>
+<p>使用技术:<br>Vue2.0<br>axios+promise 网络请求封装<br>VueRouter<br>mint-UI</p>
+</blockquote>
+<p>浏览地址：<br><a href="http://code.it919.cn/dist">Demo Link</a></p>
+<p><img src="https://dn-coding-net-production-pp.qbox.me/8175c051-daa0-4148-8842-c235c2a398de.png" alt="二维码"> </p>
+<h3 id="Build-Setup-安装部署运行"><a href="#Build-Setup-安装部署运行" class="headerlink" title="Build Setup 安装部署运行"></a>Build Setup 安装部署运行</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"><span class="built_in">clone</span></span></div><div class="line">git clone https://github.com/ecitlm/Vue_news.git</div><div class="line"><span class="meta">#</span><span class="bash"> install dependencies</span></div><div class="line">npm install</div><div class="line"></div><div class="line"><span class="meta">#</span><span class="bash"> serve with hot reload at localhost:800</span></div><div class="line">npm run dev</div></pre></td></tr></table></figure>
+<h3 id="网络请求封装"><a href="#网络请求封装" class="headerlink" title="网络请求封装"></a>网络请求封装</h3><blockquote>
+<p>这里封装了两个网络请求方法  fetchPost，fetchGet以及请求配置，通过</p>
+</blockquote>
+<p>config,js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'axios'</span></div><div class="line"><span class="keyword">import</span> qs <span class="keyword">from</span> <span class="string">'qs'</span></div><div class="line"><span class="comment">// axios 配置</span></div><div class="line">axios.defaults.timeout = <span class="number">5000</span>;</div><div class="line">axios.defaults.baseURL = <span class="string">'https://api.it919.cn/public/api'</span>;</div><div class="line"></div><div class="line"><span class="comment">//POST传参序列化</span></div><div class="line">axios.interceptors.request.use(<span class="function">(<span class="params">config</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">if</span> (config.method === <span class="string">'post'</span>) &#123;</div><div class="line">        config.data = qs.stringify(config.data);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> config;</div><div class="line">&#125;, (error) =&gt; &#123;</div><div class="line">    alert(<span class="string">"错误的传参"</span>)</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(error);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * </span></div><div class="line"><span class="comment"> * POST 请求方式</span></div><div class="line"><span class="comment"> * @param &#123;string&#125; url     请求URL</span></div><div class="line"><span class="comment"> * @param &#123;object&#125; params  请求参数</span></div><div class="line"><span class="comment"> * @returns </span></div><div class="line"><span class="comment"> */</span></div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">    <span class="comment">//fetchPost  请求方式</span></div><div class="line">    fetchPost: <span class="function"><span class="keyword">function</span>(<span class="params">url, params</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">            axios.post(url, params)</div><div class="line">                .then(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</div><div class="line">                    resolve(response.data);</div><div class="line">                &#125;, err =&gt; &#123;</div><div class="line">                    reject(err);</div><div class="line">                &#125;)</div><div class="line">                .catch(<span class="function">(<span class="params">error</span>) =&gt;</span> &#123;</div><div class="line">                    reject(error)</div><div class="line">                &#125;)</div><div class="line">        &#125;)</div><div class="line">    &#125;,</div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">//GET 请求方式</span></div><div class="line">    fetchGet: <span class="function"><span class="keyword">function</span>(<span class="params">url, params</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(params)</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">            axios.get(url, &#123;</div><div class="line">                    params: params</div><div class="line">                &#125;)</div><div class="line">                .then(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</div><div class="line">                    resolve(response.data);</div><div class="line">                &#125;, err =&gt; &#123;</div><div class="line">                    reject(err);</div><div class="line">                &#125;)</div><div class="line">                .catch(<span class="function">(<span class="params">error</span>) =&gt;</span> &#123;</div><div class="line">                    reject(error)</div><div class="line">                &#125;);</div><div class="line">        &#125;)</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>api.js 为所有接口封装,如下面的相关接口</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> fetch <span class="keyword">from</span> <span class="string">'./config'</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 新闻轮播图</span></div><div class="line"><span class="comment">     * @param &#123;object&#125; params </span></div><div class="line"><span class="comment">     * @returns </span></div><div class="line"><span class="comment">     */</span></div><div class="line">    banner(params) &#123;</div><div class="line">        <span class="keyword">return</span> fetch.fetchPost(<span class="string">'News/banner'</span>, params);</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 文章分类列表</span></div><div class="line"><span class="comment">     * @param &#123;object&#125; params &#123;page：分页，type:文章类型&#125;</span></div><div class="line"><span class="comment">     * @returns </span></div><div class="line"><span class="comment">     */</span></div><div class="line">    new_list(params) &#123;</div><div class="line">        <span class="keyword">return</span> fetch.fetchGet(<span class="string">'News/new_list'</span>, params)</div><div class="line">    &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>使用请求接口数据</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 获取首页新闻列表</span></div><div class="line">   [types.FECTH_INDEX_NEWS](&#123;commit&#125;) &#123;</div><div class="line">       <span class="keyword">var</span> data=&#123;</div><div class="line">           page:<span class="number">20</span>,</div><div class="line">           type:<span class="number">0</span></div><div class="line">       &#125;</div><div class="line">       api.new_list(data)</div><div class="line">           .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</div><div class="line">               commit(types.TOGGLE_INDEX_NEWS, res.data)</div><div class="line">           &#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> <span class="built_in">console</span>.log(err))</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<h3 id="UI界面"><a href="#UI界面" class="headerlink" title="UI界面"></a>UI界面</h3><p> <img src="https://coding.net/u/ecit/p/vue_news/git/raw/898b4a541e6433d131baa5aff72abee62236ed35/UI/index1.jpg" alt="图片"> <img src="https://dn-coding-net-production-pp.qbox.me/a271b902-089f-4a1b-8879-357a113b66e5.png" alt="图片"></p>
+<p> <img src="https://coding.net/u/ecit/p/vue_news/git/raw/master/UI/%25E7%2594%25B5%25E5%25BD%25B11-%25E7%2583%25AD%25E6%2592%25AD%25E5%2588%2597%25E8%25A1%25A8.jpg" alt="图片"> <img src="https://coding.net/u/ecit/p/vue_news/git/raw/898b4a541e6433d131baa5aff72abee62236ed35/UI/%25E7%2594%25B5%25E5%25BD%25B12-%25E8%25AF%25A6%25E6%2583%2585.jpg" alt="图片"></p>
+<p> <img src="https://coding.net/u/ecit/p/vue_news/git/raw/898b4a541e6433d131baa5aff72abee62236ed35/UI/music1-%E5%88%86%E7%B1%BB.jpg" alt="图片"> <img src="https://coding.net/u/ecit/p/vue_news/git/raw/898b4a541e6433d131baa5aff72abee62236ed35/UI/music2-%E5%88%86%E7%B1%BB%E6%AD%8C%E5%8D%95.jpg" alt="图片"> <img src="https://coding.net/u/ecit/p/vue_news/git/raw/898b4a541e6433d131baa5aff72abee62236ed35/UI/music3-音乐播放.jpg" alt="图片"> </p>
+<p> <img src="https://coding.net/u/ecit/p/vue_news/git/raw/898b4a541e6433d131baa5aff72abee62236ed35/UI/photo1-%E5%88%86%E7%B1%BB.jpg" alt="图片"> <img src="https://coding.net/u/ecit/p/vue_news/git/raw/898b4a541e6433d131baa5aff72abee62236ed35/UI/%E8%A7%86%E9%A2%911.jpg" alt="图片"> </p>
+<p> <img src="https://coding.net/u/ecit/p/vue_news/git/raw/898b4a541e6433d131baa5aff72abee62236ed35/UI/%E7%AC%91%E8%AF%9D%E6%AE%B5%E5%AD%90.jpg" alt="图片"> </p>
+
+      
+    </div>
+
+
+    <div>
+      
+        
+      
+    </div>
+
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+</div>
+
+
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Vue/" rel="tag"><i class="fa fa-tag"></i> Vue</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/sublime插件/" rel="next" title="Sublime_text3 实用插件整理">
+                <i class="fa fa-chevron-left"></i> Sublime_text3 实用插件整理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/kugou-api/" rel="prev" title="酷狗音乐web端API接口数据">
+                酷狗音乐web端API接口数据 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/img/head.jpg"
+               alt="ecitlm" />
+          <p class="site-author-name" itemprop="name">ecitlm</p>
+          <p class="site-description motion-element" itemprop="description">ecitlm的博客,个人主页</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ecitlm" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://coding.net/u/ecit" target="_blank" title="Coding">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Coding
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Build-Setup-安装部署运行"><span class="nav-number">1.</span> <span class="nav-text">Build Setup 安装部署运行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络请求封装"><span class="nav-number">2.</span> <span class="nav-text">网络请求封装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UI界面"><span class="nav-number">3.</span> <span class="nav-text">UI界面</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ecitlm</span>
+</div>
+
+
+<!-- <div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div> -->
+
+<div class="theme-info">
+
+    <!-- NexT.Mist --> code.it919.cn
+
+</div>
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共45.3k字  &#169;   CopyRight 赣ICP备16002536号-1</span>
+</div>
+
+<!-- 动画线条 -->
+ <!-- <script src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script> -->
+<!-- 百度统计 -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?6fbe06b4e898b834715c43886bdd9985";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+<script src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+<script src="https://cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
+<script src="https://cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

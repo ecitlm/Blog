@@ -1,0 +1,813 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #000; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #000, 0 0 5px     #000; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #000;    /*上边框颜色*/
+        border-left-color: #000;    /*左边框颜色*/
+    }
+</style>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+<!-- 
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+-->
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,小程序,wxapp," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="从零开始实现一个NBA赛事直播新闻小程序切含后台接口的编写,接口来源是分析体育H5端的接口,使用php对接口进行抓取整理,切对接口进行了签名校验，已经实现，但没有用上小程序之中通过，接口整理一开始使用的是ThinkPHP5对接口统一整理的、后面使用PhalAPi对接口文档进行了再次的整理,整理的接口有以下,通过以下接口数据完成一个简单的大气的NBA小程序的开发">
+<meta name="keywords" content="javascript,小程序,wxapp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从0开始实现一个NBA赛事直播新闻小程序(含后台接口)">
+<meta property="og:url" content="http://code.it919.cn/2017/11/wx-nba-application/index.html">
+<meta property="og:site_name" content="IT开发者">
+<meta property="og:description" content="从零开始实现一个NBA赛事直播新闻小程序切含后台接口的编写,接口来源是分析体育H5端的接口,使用php对接口进行抓取整理,切对接口进行了签名校验，已经实现，但没有用上小程序之中通过，接口整理一开始使用的是ThinkPHP5对接口统一整理的、后面使用PhalAPi对接口文档进行了再次的整理,整理的接口有以下,通过以下接口数据完成一个简单的大气的NBA小程序的开发">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/11/3/6e5575af9cdfe080304e7239cff40e89">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/11/3/9891d424f55687c0ecdf8356baef72e3">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/11/3/80f7e486ab3c0dce0e936cb8b9e8e05e">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/11/3/d4d8e33f8bb69d74a618f57bbb3f07d8">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/11/3/1e78f1707b1518d311f8630a8dbac160">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/11/3/12646461f61d7f8e9f938f1b998d24cc">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/11/3/45db5be8620ced658e35a4adc4bd65c3">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/11/3/d264a8aafcccc8266d9d55f2a1fb54aa">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/11/3/0ff0aea2847dc1b0a41ce0d22341ff36">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/11/3/703963b267cbb71871a4ee936dc47a75">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/11/3/2fe5707340136c88a82c0f17b032e0b8">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/11/3/455fceb7966e6aed5b6b85638da18fab">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/11/3/07a43e2416a473d3312409add56588a4">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/11/3/59d316149c0cbf6b6cc547cf2524fbfe">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/11/3/0ebf3852d977ba72168cae5cd1fb3f3f">
+<meta property="og:updated_time" content="2017-11-03T15:10:54.519Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从0开始实现一个NBA赛事直播新闻小程序(含后台接口)">
+<meta name="twitter:description" content="从零开始实现一个NBA赛事直播新闻小程序切含后台接口的编写,接口来源是分析体育H5端的接口,使用php对接口进行抓取整理,切对接口进行了签名校验，已经实现，但没有用上小程序之中通过，接口整理一开始使用的是ThinkPHP5对接口统一整理的、后面使用PhalAPi对接口文档进行了再次的整理,整理的接口有以下,通过以下接口数据完成一个简单的大气的NBA小程序的开发">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2017/11/3/6e5575af9cdfe080304e7239cff40e89">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://code.it919.cn/2017/11/wx-nba-application/"/>
+
+
+
+
+
+  <title> 从0开始实现一个NBA赛事直播新闻小程序(含后台接口) | IT开发者 </title>
+  
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+    <a href="https://github.com/ecitlm" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">IT开发者</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://code.it919.cn/2017/11/wx-nba-application/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="ecitlm">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/img/head.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="IT开发者">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="IT开发者" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                从0开始实现一个NBA赛事直播新闻小程序(含后台接口)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="post.created" itemprop="dateCreated datePublished" datetime="2017-11-03T22:27:28+08:00">
+                2017-11-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Blog/" itemprop="url" rel="index">
+                    <span itemprop="name">Blog</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+              <div class="post-description">
+                  从零开始实现一个NBA赛事直播新闻小程序切含后台接口的编写,接口来源是分析体育H5端的接口,使用php对接口进行抓取整理,切对接口进行了签名校验，已经实现，但没有用上小程序之中通过，接口整理一开始使用的是ThinkPHP5对接口统一整理的、后面使用PhalAPi对接口文档进行了再次的整理,整理的接口有以下,通过以下接口数据完成一个简单的大气的NBA小程序的开发
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>写在前面的一段话</strong></p>
+<blockquote>
+<p>关于NBA、基于深刻的莫过于高中时代的，买篮球先锋报、用手机2G网络和同学凑在一起看文字直播、还生怕班主任老师发现，<br>印象中第一次了解NBA是在2006年的英语书上，有一页上面是所有球队的logo以及名字、那时开始慢慢的了解篮球、了解到了休斯顿火箭队大姚、<br>从此对火箭队情有独钟、时至今日依然对那支22连胜的火箭有太多感情、时至今日绿军三巨头、邓肯、蜗壳都已经退役了,oh~oh~oh好像有点跑题了，还是回到主题、记录花了几天时间写的这个小程序</p>
+</blockquote>
+<p><strong>话不多少先上源码地址</strong><br>小程序GitHub地址: <a href="https://github.com/ecitlm/wx-nba" target="_blank" rel="external">https://github.com/ecitlm/wx-nba</a><br>后端接口API地址:可先参照  <a href="https://ecitlm.github.io/TP5_Splider/#/?id=tp5_splider" target="_blank" rel="external">https://ecitlm.github.io/TP5_Splider/#/?id=tp5_splider</a><br>项目下面的 controller 下的Nba.php类</p>
+<p><strong>部分界面效果体验</strong></p>
+<center><br><img src="https://user-gold-cdn.xitu.io/2017/11/3/6e5575af9cdfe080304e7239cff40e89" alt=""><img src="https://user-gold-cdn.xitu.io/2017/11/3/9891d424f55687c0ecdf8356baef72e3" alt=""><br></center>
+
+<h2 id="关于接口API"><a href="#关于接口API" class="headerlink" title="关于接口API"></a>关于接口API</h2><blockquote>
+<p>接口来源是分析腾*体育H5端 的接口，使用php对接口进行抓取整理、切对接口进行了签名校验，已经实现，但没有用上小程序之中通过，接口整理一开始使用的是<code>ThinkPHP5</code>对接口统一整理的、后面使用<code>PhalAPi</code>对接口文档进行了再次的整理，整理的接口有以下、通过以下接口数据完成一个简单的大气的NBA小程序的开发、目前小程序正处于上架申请中。</p>
+</blockquote>
+<ul>
+<li>每日赛事直播列表接口</li>
+<li>球赛直播实时详情接口</li>
+<li>实时数据统计接口</li>
+<li>球队进本信息接口</li>
+<li>球队球员阵容名单接口</li>
+<li>球员基本信息赛季数据接口</li>
+<li>30只球队排名数据接口</li>
+<li>篮球快讯新闻列表接口</li>
+<li>新闻详情接口</li>
+<li>新闻评论数据接口<br>在线接口系统地址 <a href="https://wxapp.it919.cn/wx/listAllApis.php" target="_blank" rel="external">https://wxapp.it919.cn/wx/listAllApis.php</a><br><img src="https://user-gold-cdn.xitu.io/2017/11/3/80f7e486ab3c0dce0e936cb8b9e8e05e" alt="图片"></li>
+</ul>
+<h2 id="小程序界面"><a href="#小程序界面" class="headerlink" title="小程序界面"></a>小程序界面</h2><blockquote>
+<p>界面整体有十几个、包含以上接口对应的UI界面、以下界面属于应用的截图界面</p>
+</blockquote>
+<center><br><img src="https://user-gold-cdn.xitu.io/2017/11/3/d4d8e33f8bb69d74a618f57bbb3f07d8" width="300"><img src="https://user-gold-cdn.xitu.io/2017/11/3/1e78f1707b1518d311f8630a8dbac160" width="300"><img src="https://user-gold-cdn.xitu.io/2017/11/3/12646461f61d7f8e9f938f1b998d24cc" width="300"><img src="https://user-gold-cdn.xitu.io/2017/11/3/45db5be8620ced658e35a4adc4bd65c3" width="300"><img src="https://user-gold-cdn.xitu.io/2017/11/3/d264a8aafcccc8266d9d55f2a1fb54aa" width="300"><img src="https://user-gold-cdn.xitu.io/2017/11/3/0ff0aea2847dc1b0a41ce0d22341ff36" width="300"><img src="https://user-gold-cdn.xitu.io/2017/11/3/703963b267cbb71871a4ee936dc47a75" width="300"><img src="https://user-gold-cdn.xitu.io/2017/11/3/2fe5707340136c88a82c0f17b032e0b8" width="300"><img src="https://user-gold-cdn.xitu.io/2017/11/3/455fceb7966e6aed5b6b85638da18fab" width="300"><img src="https://user-gold-cdn.xitu.io/2017/11/3/07a43e2416a473d3312409add56588a4" width="300"><br></center>
+
+<h2 id="项目目录结构"><a href="#项目目录结构" class="headerlink" title="项目目录结构"></a>项目目录结构</h2><blockquote>
+<p>项目目录结构如下<br><img src="https://user-gold-cdn.xitu.io/2017/11/3/59d316149c0cbf6b6cc547cf2524fbfe" alt=""></p>
+</blockquote>
+<h3 id="网络请求的封装"><a href="#网络请求的封装" class="headerlink" title="网络请求的封装"></a>网络请求的封装</h3><p>网络请求使用小程序的 <code>wx.request</code>+ <code>promise</code>+<code>bluebird</code> 对接口请求方法进行封装,一些列出的代码属于项目的核心代码<br><code>utils</code>目录下的<code>fetch.js</code>文件所对应的方法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> <span class="built_in">Promise</span> = <span class="built_in">require</span>(<span class="string">"./bluebird"</span>); <span class="comment">//为了兼容问题</span></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * 网络请求API接口</span></div><div class="line"><span class="comment"> * @param  &#123;String&#125; api    api 根地址</span></div><div class="line"><span class="comment"> * @param  &#123;String&#125; path   请求路径</span></div><div class="line"><span class="comment"> * @param  &#123;Objece&#125; params 参数</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">api, path, params</span>) </span>&#123;</div><div class="line">    wx.showLoading(&#123;</div><div class="line">        title: <span class="string">"加载中"</span></div><div class="line">    &#125;);</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;api&#125;</span>/<span class="subst">$&#123;path&#125;</span>`</span>);</div><div class="line">    <span class="built_in">console</span>.log(params);</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">        wx.request(&#123;</div><div class="line">            url: <span class="string">`<span class="subst">$&#123;api&#125;</span>/<span class="subst">$&#123;path&#125;</span>`</span>,</div><div class="line">            data: <span class="built_in">Object</span>.assign(&#123;&#125;, params), <span class="comment">//如果这里需要合并签名时间戳参数时候可以这么写</span></div><div class="line">            header: &#123; <span class="string">"Content-Type"</span>: <span class="string">"json"</span> &#125;,</div><div class="line">            success: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</div><div class="line">                resolve(res);</div><div class="line">                wx.hideLoading();</div><div class="line">            &#125;,</div><div class="line">            fail: <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</div><div class="line">                wx.hideLoading();</div><div class="line">                reject(err);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>所有接口的请求放在<code>api.js</code>之中<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> fetch = <span class="built_in">require</span>(<span class="string">"./fetch"</span>);</div><div class="line"><span class="keyword">const</span> API_DOMAIN = <span class="string">"https://api.xxx.cn/api"</span>;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * @param  &#123;String&#125; 接口地址   </span></div><div class="line"><span class="comment"> * @param  &#123;Objece&#125; params 接口参数参数</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fetchApi</span>(<span class="params">api, params</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> fetch(API_DOMAIN, api, params);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//NBA比赛直播</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">nab_schedule</span>(<span class="params">params</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> fetchApi(<span class="string">"Nba/schedule"</span>, params).then(<span class="function"><span class="params">res</span> =&gt;</span> res.data);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//直播室信息</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">live_detail</span>(<span class="params">params</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> fetchApi(<span class="string">"Nba/live_detail"</span>, params).then(<span class="function"><span class="params">res</span> =&gt;</span> res.data);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//直播内容</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">live_content</span>(<span class="params">params</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> fetchApi(<span class="string">"Nba/live_content"</span>, params).then(<span class="function"><span class="params">res</span> =&gt;</span> res.data);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//球员技术统计</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">technical_statistics</span>(<span class="params">params</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> fetchApi(<span class="string">"Nba/technical_statistics"</span>, params).then(<span class="function"><span class="params">res</span> =&gt;</span> res.data);</div><div class="line">&#125;</div><div class="line"><span class="comment">//球员详情</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">player_detail</span>(<span class="params">params</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> fetchApi(<span class="string">"Nba/player_detail"</span>, params).then(<span class="function"><span class="params">res</span> =&gt;</span> res.data);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//联盟排名</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">team_rank</span>(<span class="params">params</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> fetchApi(<span class="string">"Nba/team_rank"</span>, params).then(<span class="function"><span class="params">res</span> =&gt;</span> res.data);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//球队信息</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">team_info</span>(<span class="params">params</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> fetchApi(<span class="string">"Nba/team_info"</span>, params).then(<span class="function"><span class="params">res</span> =&gt;</span> res.data);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//球队阵容</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Lineup</span>(<span class="params">params</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> fetchApi(<span class="string">"Nba/Lineup"</span>, params).then(<span class="function"><span class="params">res</span> =&gt;</span> res.data);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//新闻详情</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">news_info</span>(<span class="params">params</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> fetchApi(<span class="string">"Nba/news_info"</span>, params).then(<span class="function"><span class="params">res</span> =&gt;</span> res.data);</div><div class="line">&#125;</div><div class="line"><span class="comment">//NBA 新闻快讯</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">news_list</span>(<span class="params">params</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> fetchApi(<span class="string">"Nba/new_list"</span>, params).then(<span class="function"><span class="params">res</span> =&gt;</span> res.data);</div><div class="line">&#125;</div><div class="line"><span class="comment">//NBA新闻评论</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">news_comments</span>(<span class="params">params</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> fetchApi(<span class="string">"Nba/news_comments"</span>, params).then(<span class="function"><span class="params">res</span> =&gt;</span> res.data);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//关于我</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">website</span>(<span class="params">params</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> fetchApi(<span class="string">"Nba/website"</span>, params).then(<span class="function"><span class="params">res</span> =&gt;</span> res.data);</div><div class="line">&#125;</div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">    nab_schedule,</div><div class="line">    live_detail,</div><div class="line">    live_content,</div><div class="line">    technical_statistics,</div><div class="line">    player_detail,</div><div class="line">    team_rank,</div><div class="line">    team_info,</div><div class="line">    Lineup,</div><div class="line">    news_info,</div><div class="line">    news_comments,</div><div class="line">    news_list,</div><div class="line">    website</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h2 id="数据渲染问题"><a href="#数据渲染问题" class="headerlink" title="数据渲染问题"></a>数据渲染问题</h2><blockquote>
+<p>在对请求到的接口数据渲染的过程之中并没有遇到什么大的问题，页面布局上的事情也就没什么可讲的了，比较麻烦的事情是需要对接口返回的每个字段进行分析所对应的显示问题，这个再记录一下赛事直播界面的数据、新闻详情的数据渲染解析HTML的问题。</p>
+</blockquote>
+<h3 id="页面布局"><a href="#页面布局" class="headerlink" title="页面布局"></a>页面布局</h3><p>小程序页面布局使用的单位是<code>rpx</code>,对应设计稿<code>750px</code>是最舒服的、rpx可以根据屏幕宽度进行自适应。规定屏幕宽为750rpx。如在 iPhone6 上，屏幕宽度为375px，共有750个物理像素，则750rpx = 375px = 750物理像素，1rpx = 0.5px = 1物理像素。</p>
+<table>
+<thead>
+<tr>
+<th>设备</th>
+<th style="text-align:center">rpx换算px (屏幕宽度/750</th>
+<th style="text-align:right">px换算rpx (750/屏幕宽度)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>iPhone5</td>
+<td style="text-align:center">1rpx = 0.42px</td>
+<td style="text-align:right">1px = 2.34rpx</td>
+</tr>
+<tr>
+<td>iPhone6</td>
+<td style="text-align:center">1rpx = 0.5px</td>
+<td style="text-align:right">1px = 2rpx</td>
+</tr>
+</tbody>
+</table>
+<h3 id="数据绑定渲染wxml页面"><a href="#数据绑定渲染wxml页面" class="headerlink" title="数据绑定渲染wxml页面"></a>数据绑定渲染wxml页面</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> app = getApp();</div><div class="line">Page(&#123;</div><div class="line">    data: &#123;</div><div class="line">        list: [],</div><div class="line">        footer: <span class="number">0</span>  <span class="comment">//footer 底部导航栏切换高亮所要用到的值</span></div><div class="line"></div><div class="line">    &#125;,</div><div class="line">    onLoad: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.nab_schedule(<span class="string">""</span>) <span class="comment">//初始化数据</span></div><div class="line">    &#125;,</div><div class="line">    <span class="comment">//ajax 列表请求</span></div><div class="line">    nab_schedule: <span class="function"><span class="keyword">function</span>(<span class="params">param</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> that = <span class="keyword">this</span>;</div><div class="line">        <span class="keyword">var</span> params = &#123;</div><div class="line">            date: param</div><div class="line">        &#125;;</div><div class="line">        app.api.nab_schedule(params)</div><div class="line">            .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</div><div class="line">                that.setData(&#123;</div><div class="line">                    list: res.data.data</div><div class="line">                &#125;);</div><div class="line">            &#125;)</div><div class="line">            .catch(<span class="function"><span class="params">e</span> =&gt;</span> &#123;</div><div class="line">                <span class="built_in">console</span>.error(e)</div><div class="line">            &#125;);</div><div class="line"></div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    <span class="comment">//选择日期变化请求数据</span></div><div class="line">    selectDate: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.nab_schedule(e.target.dataset.time);</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">//  点击日期组件确定事件  </span></div><div class="line">    bindDateChange: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.nab_schedule(e.detail.value);</div><div class="line">    &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>新闻详情页面渲染使用到了<code>wxParse</code>，能搞方便的解决渲染<code>HTML</code>转<code>wxml</code>的问题<br> 模板页面用<code>import</code>导入、渲染HTML<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"> <span class="tag">&lt;<span class="name">import</span> <span class="attr">src</span>=<span class="string">"../wxParse/wxParse.wxml"</span> /&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"wxParse"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">template</span> <span class="attr">is</span>=<span class="string">"wxParse"</span> <span class="attr">data</span>=<span class="string">"&#123;&#123;wxParseData:article.nodes&#125;&#125;"</span> /&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">view</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>在接口请求成功时候对<code>res.body</code>进行一个操作处理，使用起来也比较简单<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">onLoad: <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</div><div class="line"></div><div class="line">   <span class="keyword">var</span> data = &#123;</div><div class="line">     docid: e.docid || <span class="string">"D230QPOC0005877U"</span></div><div class="line">   &#125;</div><div class="line">   <span class="keyword">var</span> that = <span class="keyword">this</span>;</div><div class="line">   app.api.news_info(data)</div><div class="line">     .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</div><div class="line">       <span class="built_in">console</span>.log(res);</div><div class="line">       that.setData(&#123;</div><div class="line">         item: res.data</div><div class="line">       &#125;);</div><div class="line">       that.news_comments(data);</div><div class="line">       <span class="keyword">if</span>(res.data &amp;&amp; res.data.img.length!=<span class="number">0</span>)&#123;</div><div class="line">          <span class="keyword">var</span> replaceStr = <span class="string">"&lt;img src="</span> + (res.data.img[<span class="number">0</span>])[<span class="string">'src'</span>] + <span class="string">"&gt;"</span>;</div><div class="line">          res.data.body = res.data.body.replace(<span class="string">"&lt;!--IMG#0--&gt;"</span>, replaceStr);</div><div class="line">       &#125;</div><div class="line">       WxParse.wxParse(<span class="string">'article'</span>, <span class="string">'html'</span>, res.data.body, that, <span class="number">5</span>);</div><div class="line">      </div><div class="line">     &#125;)</div><div class="line">     .catch(<span class="function"><span class="params">e</span> =&gt;</span> &#123;</div><div class="line">       <span class="built_in">console</span>.error(e)</div><div class="line">       <span class="keyword">var</span> article = <span class="string">"文章已经删除"</span>;</div><div class="line">       WxParse.wxParse(<span class="string">'article'</span>, <span class="string">'html'</span>, article, that, <span class="number">5</span>);</div><div class="line">     &#125;);</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
+<h3 id="图片大图预览功能实现"><a href="#图片大图预览功能实现" class="headerlink" title="图片大图预览功能实现"></a>图片大图预览功能实现</h3><p>演示：<br><img src="https://user-gold-cdn.xitu.io/2017/11/3/0ebf3852d977ba72168cae5cd1fb3f3f" alt=""></p>
+<p>小程序内置的图片查看放大组件<code>wx.previewImage</code>，使用该方法可以实现图片放大预览效果功能<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">wx.previewImage(&#123;</div><div class="line">      current: url, <span class="comment">// 当前显示图片的http链接</span></div><div class="line">      urls: [url] <span class="comment">// 需要预览的图片http链接列表</span></div><div class="line">    &#125;)</div></pre></td></tr></table></figure></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><blockquote>
+<p>小程序一直处于不温不火中、在笔者这这篇归档时、小程序已经开通内嵌网页功能、整体来说小程序还是很容易上手的、重要得多是多看文档，查找相关资料、仅以此文章记录开发体验、小应用还会持续更新、有感兴趣的小伙伴欢迎交流、源代码托管在<code>GitHub</code></p>
+</blockquote>
+
+      
+    </div>
+
+
+    <div>
+      
+        
+      
+    </div>
+
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+</div>
+
+
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag"><i class="fa fa-tag"></i> javascript</a>
+          
+            <a href="/tags/小程序/" rel="tag"><i class="fa fa-tag"></i> 小程序</a>
+          
+            <a href="/tags/wxapp/" rel="tag"><i class="fa fa-tag"></i> wxapp</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/kugou-api/" rel="next" title="酷狗音乐web端API接口数据">
+                <i class="fa fa-chevron-left"></i> 酷狗音乐web端API接口数据
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/node-express-splider-api/" rel="prev" title="基于Node+express爬虫的数据 API 爬一套自己的api数据">
+                基于Node+express爬虫的数据 API 爬一套自己的api数据 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/img/head.jpg"
+               alt="ecitlm" />
+          <p class="site-author-name" itemprop="name">ecitlm</p>
+          <p class="site-description motion-element" itemprop="description">ecitlm的博客,个人主页</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ecitlm" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://coding.net/u/ecit" target="_blank" title="Coding">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Coding
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于接口API"><span class="nav-number">1.</span> <span class="nav-text">关于接口API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小程序界面"><span class="nav-number">2.</span> <span class="nav-text">小程序界面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目目录结构"><span class="nav-number">3.</span> <span class="nav-text">项目目录结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#网络请求的封装"><span class="nav-number">3.1.</span> <span class="nav-text">网络请求的封装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据渲染问题"><span class="nav-number">4.</span> <span class="nav-text">数据渲染问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#页面布局"><span class="nav-number">4.1.</span> <span class="nav-text">页面布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据绑定渲染wxml页面"><span class="nav-number">4.2.</span> <span class="nav-text">数据绑定渲染wxml页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图片大图预览功能实现"><span class="nav-number">4.3.</span> <span class="nav-text">图片大图预览功能实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ecitlm</span>
+</div>
+
+
+<!-- <div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div> -->
+
+<div class="theme-info">
+
+    <!-- NexT.Mist --> code.it919.cn
+
+</div>
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共45.3k字  &#169;   CopyRight 赣ICP备16002536号-1</span>
+</div>
+
+<!-- 动画线条 -->
+ <!-- <script src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script> -->
+<!-- 百度统计 -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?6fbe06b4e898b834715c43886bdd9985";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+<script src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+<script src="https://cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
+<script src="https://cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

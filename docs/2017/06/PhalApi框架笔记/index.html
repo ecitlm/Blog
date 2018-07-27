@@ -1,0 +1,765 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #000; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #000, 0 0 5px     #000; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #000;    /*上边框颜色*/
+        border-left-color: #000;    /*左边框颜色*/
+    }
+</style>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+<!-- 
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+-->
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="php," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="PhapApi框架使用小记,PhalApi是一个PHP轻量级开源接口框架，致力于快速开发接口服务。 支持HTTP/SOAP/RPC等协议，可用于搭建接口/微服务/RESTful接口/Web Services">
+<meta name="keywords" content="php">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PhapApi框架使用小记">
+<meta property="og:url" content="http://code.it919.cn/2017/06/PhalApi框架笔记/index.html">
+<meta property="og:site_name" content="IT开发者">
+<meta property="og:description" content="PhapApi框架使用小记,PhalApi是一个PHP轻量级开源接口框架，致力于快速开发接口服务。 支持HTTP/SOAP/RPC等协议，可用于搭建接口/微服务/RESTful接口/Web Services">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://dn-coding-net-production-pp.qbox.me/6b117d2e-ce35-47f8-b084-3c6b15ee4d13.png">
+<meta property="og:updated_time" content="2017-10-20T16:01:50.903Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PhapApi框架使用小记">
+<meta name="twitter:description" content="PhapApi框架使用小记,PhalApi是一个PHP轻量级开源接口框架，致力于快速开发接口服务。 支持HTTP/SOAP/RPC等协议，可用于搭建接口/微服务/RESTful接口/Web Services">
+<meta name="twitter:image" content="https://dn-coding-net-production-pp.qbox.me/6b117d2e-ce35-47f8-b084-3c6b15ee4d13.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://code.it919.cn/2017/06/PhalApi框架笔记/"/>
+
+
+
+
+
+  <title> PhapApi框架使用小记 | IT开发者 </title>
+  
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+    <a href="https://github.com/ecitlm" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">IT开发者</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://code.it919.cn/2017/06/PhalApi框架笔记/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="ecitlm">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/img/head.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="IT开发者">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="IT开发者" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                PhapApi框架使用小记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="post.created" itemprop="dateCreated datePublished" datetime="2017-06-11T18:17:28+08:00">
+                2017-06-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/php/" itemprop="url" rel="index">
+                    <span itemprop="name">php</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+              <div class="post-description">
+                  PhapApi框架使用小记,PhalApi是一个PHP轻量级开源接口框架，致力于快速开发接口服务。 支持HTTP/SOAP/RPC等协议，可用于搭建接口/微服务/RESTful接口/Web Services
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="什么是PhapApi"><a href="#什么是PhapApi" class="headerlink" title="什么是PhapApi"></a>什么是PhapApi</h3><blockquote>
+<p><a href="https://github.com/phalapi/phalapi/" target="_blank" rel="external">PhalApi</a>是一个PHP轻量级开源接口框架，致力于快速开发接口服务。 支持HTTP/SOAP/RPC等协议，可用于搭建接口/微服务/RESTful接口/Web Services，</p>
+</blockquote>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">.</div><div class="line">│</div><div class="line">├── PhalApi         <span class="comment">//PhalApi框架，后期可以整包升级</span></div><div class="line">│</div><div class="line">│</div><div class="line">├── <span class="keyword">Public</span>          <span class="comment">//对外访问目录，建议隐藏PHP实现</span></div><div class="line">│   └── demo        <span class="comment">//Demo服务访问入口</span></div><div class="line">│</div><div class="line">│</div><div class="line">├── Config          <span class="comment">//项目接口公共配置，主要有：app.php, sys.php, dbs.php</span></div><div class="line">├── Data            <span class="comment">//项目接口公共数据</span></div><div class="line">├── Language        <span class="comment">//项目接口公共翻译</span></div><div class="line">├── <span class="keyword">Runtime</span>         <span class="comment">//项目接口运行文件目录，用于存放日记，可软链到别的区</span></div><div class="line">│</div><div class="line">│</div><div class="line">└── Demo            <span class="comment">//应用接口服务，名称自取，可多组</span></div><div class="line">    ├── Api             <span class="comment">//接口响应层</span></div><div class="line">    ├── Domain          <span class="comment">//接口领域层</span></div><div class="line">    ├── Model           <span class="comment">//接口持久层</span></div><div class="line">    └── Tests           <span class="comment">//接口单元测试</span></div></pre></td></tr></table></figure>
+<h3 id="PhalApi核心思想"><a href="#PhalApi核心思想" class="headerlink" title="PhalApi核心思想"></a>PhalApi核心思想</h3><blockquote>
+<p>核心思想：DI依赖注入</p>
+</blockquote>
+<p>###PhalApi框架三层结构Api+Domain+Model模式</p>
+<p>1.1 Api层<br>它会通过控制器把请求转发到service层作处理，并将处理结果在页面展示，所以Api更像担当控制器(C)的作用。</p>
+<p>1.2 Domain层</p>
+<p>Domain层主要负责的是具体的业务实现,如数据获取，一个Domain方法就是一个小的业务具体实现(注意尽量把业务划分得细一点方便通用)</p>
+<p>1.3 Model层</p>
+<p>数据库操作单独提炼出来统一处理</p>
+<h3 id="PhalApi通用公共函数和-拦截器过滤器"><a href="#PhalApi通用公共函数和-拦截器过滤器" class="headerlink" title="PhalApi通用公共函数和 拦截器过滤器"></a>PhalApi通用公共函数和 拦截器过滤器</h3><blockquote>
+<p>公用函数和拦截器</p>
+</blockquote>
+<p>1 公共函数</p>
+<p>首先在我们的根目录建立一个文件夹叫做general通用的意思,里面分别有两个文件夹Common(受TP的影响)和Intercept两个文件,我们在里面放入我们自己的文件,当然需要按照正确的规则比如Common_Base等</p>
+<p> 然后我们要使用的话当然要注册我们这个general文件作为自带加载文件,然后注册自己需要用的类,如下在入口文件<code>index.php</code>进行注入</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/** ---------------- 通用方法加载 ---------------- **/</span></div><div class="line"><span class="comment">//加载项目通用文件</span></div><div class="line">DI()-&gt;loader-&gt;addDirs(<span class="string">'General'</span>);</div><div class="line"><span class="comment">//通用函数基础类</span></div><div class="line">DI()-&gt;base = <span class="keyword">new</span> Common_Base();</div></pre></td></tr></table></figure>
+<p>2 拦截器<br>PhalApi已经有自带的拦截器，使用时一样需要先注入<br> <img src="https://dn-coding-net-production-pp.qbox.me/6b117d2e-ce35-47f8-b084-3c6b15ee4d13.png" alt="PhalApi结构"> </p>
+<blockquote>
+<p>加入我们需要对<code>token</code>进行校验，一些方法是需要验证，有些方法又是不需要验证 <code>token</code>.我们需要怎么实现呢?</p>
+</blockquote>
+<p>可以在项目目录 <code>Config/app.php</code>进行定义一个数组，数组包括的是需要验证<code>token</code>的类方法名</p>
+<figure class="highlight sml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">  * 需要带<span class="type">Token</span>的接口</div><div class="line">  */</div><div class="line"> apiTokenRules' =&gt; <span class="built_in">array</span>(</div><div class="line">     <span class="symbol">'User</span>.info',</div><div class="line">     <span class="symbol">'User</span>.updateInfo',</div><div class="line"> )</div></pre></td></tr></table></figure>
+<p>我们定义好相关需要校验<code>token</code>的数组，在 Filter下面的 <code>SimpleToken</code> 来进行校验,所有的接口访问都会走改注册了的token校验方法,我们就需要在校验方法里面做过滤拦截,<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">check</span><span class="params">()</span> </span>&#123;</div><div class="line">        $service = DI()-&gt;request-&gt;get(<span class="string">'service'</span>);</div><div class="line">        $app=DI()-&gt;config-&gt;get(<span class="string">'app'</span>);</div><div class="line">        $app = json_decode(json_encode($app),<span class="keyword">true</span>);</div><div class="line">        $apiTokenRules = $app[<span class="string">'apiTokenRules'</span>];</div><div class="line">        <span class="keyword">if</span> (in_array($service,$apiTokenRules)) &#123;</div><div class="line">            $allParams = DI()-&gt;request-&gt;getAll();</div><div class="line">            $token = <span class="keyword">isset</span>($allParams[<span class="string">'token'</span>]) ? $allParams[<span class="string">'token'</span>] : <span class="string">''</span>;</div><div class="line">            $user_id = $allParams[<span class="string">'user_id'</span>];</div><div class="line">            <span class="keyword">if</span> (<span class="keyword">empty</span>($user_id))&#123;</div><div class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> PhalApi_Exception_BadRequest(<span class="string">'缺少必要参数user_id'</span>);</div><div class="line">            &#125;</div><div class="line">            $service_token = DI()-&gt;cache-&gt;get($user_id.<span class="string">'token'</span>);</div><div class="line">            <span class="keyword">if</span> (<span class="keyword">empty</span>($service_token))&#123;</div><div class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> PhalApi_Exception_BadRequest(<span class="string">'请重新登录'</span>,<span class="number">99</span>);</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                <span class="keyword">if</span> (strcmp($token,$service_token) !== <span class="number">0</span>)&#123;</div><div class="line">                    DI()-&gt;logger-&gt;debug(<span class="string">'Wrong Token'</span>, <span class="keyword">array</span>(<span class="string">'needToken'</span> =&gt; $service_token));</div><div class="line">                    <span class="keyword">throw</span> <span class="keyword">new</span> PhalApi_Exception_BadRequest(<span class="string">'Token错误，请重新登录'</span>,<span class="number">99</span>);</div><div class="line">                &#125;<span class="keyword">else</span>&#123;</div><div class="line">                    DI()-&gt;cache-&gt;set($user_id.<span class="string">'token'</span>,$service_token,<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<h3 id="PhalApi-第三方SDK使用集成方法"><a href="#PhalApi-第三方SDK使用集成方法" class="headerlink" title="PhalApi 第三方SDK使用集成方法"></a>PhalApi 第三方SDK使用集成方法</h3><blockquote>
+<p>参考大神的OSC@GIT仓库  <a href="https://github.com/phalapi/phalapi-library" target="_blank" rel="external">https://github.com/phalapi/phalapi-library</a> ，仓库有比较多的SDK包 供下载使用 <code>git clone https://github.com/phalapi/phalapi-library.git</code></p>
+</blockquote>
+<p>以短信SMS 容联云短信服务器拓展为例</p>
+<blockquote>
+<p>配置方式非常简单只需要把拓展下载下来放入Library文件内即可,然后就可以使用如下方法进行实例,文件名称以<code>Lite.php</code> 为准,再到根目录进行注入使用,</p>
+</blockquote>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DI<span class="function"><span class="params">()</span>-&gt;</span>sms= <span class="keyword">new</span> SMS_Lite();</div></pre></td></tr></table></figure>
+<p>参看PhapApi<br><a href="https://github.com/phalapi/phalapi/" target="_blank" rel="external">https://github.com/phalapi/phalapi/</a><br><a href="https://www.phalapi.net/" target="_blank" rel="external">https://www.phalapi.net/</a></p>
+
+      
+    </div>
+
+
+    <div>
+      
+        
+      
+    </div>
+
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+</div>
+
+
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/php/" rel="tag"><i class="fa fa-tag"></i> php</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/phpQuery/" rel="next" title="ThinkPHP5 集成扩展 phpQuery用法总结">
+                <i class="fa fa-chevron-left"></i> ThinkPHP5 集成扩展 phpQuery用法总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/sublime插件/" rel="prev" title="Sublime_text3 实用插件整理">
+                Sublime_text3 实用插件整理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/img/head.jpg"
+               alt="ecitlm" />
+          <p class="site-author-name" itemprop="name">ecitlm</p>
+          <p class="site-description motion-element" itemprop="description">ecitlm的博客,个人主页</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ecitlm" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://coding.net/u/ecit" target="_blank" title="Coding">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Coding
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是PhapApi"><span class="nav-number">1.</span> <span class="nav-text">什么是PhapApi</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PhalApi核心思想"><span class="nav-number">2.</span> <span class="nav-text">PhalApi核心思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PhalApi通用公共函数和-拦截器过滤器"><span class="nav-number">3.</span> <span class="nav-text">PhalApi通用公共函数和 拦截器过滤器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PhalApi-第三方SDK使用集成方法"><span class="nav-number">4.</span> <span class="nav-text">PhalApi 第三方SDK使用集成方法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ecitlm</span>
+</div>
+
+
+<!-- <div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div> -->
+
+<div class="theme-info">
+
+    <!-- NexT.Mist --> code.it919.cn
+
+</div>
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共45.3k字  &#169;   CopyRight 赣ICP备16002536号-1</span>
+</div>
+
+<!-- 动画线条 -->
+ <!-- <script src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script> -->
+<!-- 百度统计 -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?6fbe06b4e898b834715c43886bdd9985";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+<script src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+<script src="https://cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
+<script src="https://cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
