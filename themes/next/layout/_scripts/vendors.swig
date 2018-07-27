@@ -5,13 +5,17 @@
     window.Promise = null;
   }
 </script>
-
+<script src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+<script src="https://cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
+<script src="https://cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
 {% set js_vendors = {} %}
-{% set js_vendors.jquery      = 'jquery/index.js?v=2.1.3' %}
-{% set js_vendors.fastclick   = 'fastclick/lib/fastclick.min.js?v=1.0.6' %}
-{% set js_vendors.lazyload    = 'jquery_lazyload/jquery.lazyload.js?v=1.9.7' %}
-{% set js_vendors.velocity    = 'velocity/velocity.min.js?v=1.2.1' %}
-{% set js_vendors.velocity_ui = 'velocity/velocity.ui.min.js?v=1.2.1' %}
+{# {% set js_vendors.jquery      = 'jquery/index.js?v=2.1.3' %} #}
+{# {% set js_vendors.fastclick   = 'fastclick/lib/fastclick.min.js?v=1.0.6' %} #}
+{# {% set js_vendors.lazyload    = 'jquery_lazyload/jquery.lazyload.js?v=1.9.7' %} #}
+{# {% set js_vendors.velocity    = 'velocity/velocity.min.js?v=1.2.1' %} #}
+{# {% set js_vendors.velocity_ui = 'velocity/velocity.ui.min.js?v=1.2.1' %}  #}
 
 {% if theme.fancybox %}
   {% set js_vendors.fancybox  = 'fancybox/source/jquery.fancybox.pack.js?v=2.1.5' %}
@@ -21,3 +25,4 @@
   {% set internal_script = url_for(theme.vendors._internal) + '/' + internal %}
   <script type="text/javascript" src="{{ theme.vendors[name] | default(internal_script) }}"></script>
 {% endfor %}
+
