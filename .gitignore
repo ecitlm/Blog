@@ -3,3 +3,5 @@ node_modules/*
 start.bat
 .idea/
 .idea/*
+CNAME
+.CNAME

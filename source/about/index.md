@@ -44,5 +44,3 @@ date: 2017-1-17 09:45:55
 __Node-SpliderAp__   [源码地址](https://github.com/ecitlm/Node-SpliderApi)    ` 450+ star  `
 __TP5_Splider      __         [源码地址](https://github.com/ecitlm/TP5_Splider)   
 __wx-nba__                [源码地址](https://github.com/ecitlm/wx-nba)
-__Vue-news__          [源码地址](https://github.com/ecitlm/Vue-news)
-
