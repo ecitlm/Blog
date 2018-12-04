@@ -14,7 +14,7 @@ date: 2017-1-17 09:45:55
  广东 深圳
  东华理工大学 软件工程
  Email: ecitlm#163.com
- GitHub: [GitHub](https://github.com/ecitlm)
+ GitHub: [https://github.com/ecitlm](https://github.com/ecitlm)
 
 
 ##### 座右铭 : 地上本没有路,走的人多了,也便成了路.
