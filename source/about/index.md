@@ -10,7 +10,7 @@ date: 2017-1-17 09:45:55
 
 # 刘明 / ecitlm
 
-####   Web开发工程师
+####   前端开发工程师
  广东 深圳
  东华理工大学 软件工程
  Email: ecitlm#163.com
@@ -30,7 +30,7 @@ date: 2017-1-17 09:45:55
 
 >### 技能
 
-1. HTML+CSS  Javascript  Vue.js  Jquery Node Webpack gulp
+1. HTML/CSS  Javascript  Vue.js  Jquery Node Webpack gulp
 1. MySQL
 1. PHP
 1. Linux
@@ -41,6 +41,6 @@ date: 2017-1-17 09:45:55
 
 > ### 个人开源项目
 
-__Node-SpliderAp__   [源码地址](https://github.com/ecitlm/Node-SpliderApi)    ` 450+ star  `
+__Node-SpliderAp__   [源码地址](https://github.com/ecitlm/Node-SpliderApi)    ` 500+ star  `
 __TP5_Splider      __         [源码地址](https://github.com/ecitlm/TP5_Splider)   
 __wx-nba__                [源码地址](https://github.com/ecitlm/wx-nba)
